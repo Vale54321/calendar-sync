@@ -1,0 +1,13 @@
+services:
+  ics-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ics-proxy
+    environment:
+      UPSTREAM_ICS_URL: "URL"
+      CACHE_TTL_SECONDS: "300"     # cache upstream for 5 minutes
+      FETCH_TIMEOUT: "15"          # upstream request timeout in seconds
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
